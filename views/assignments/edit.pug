@@ -1,0 +1,24 @@
+extends ../layout
+
+block content
+    -let curAssignment = assignment;
+    -let submitRoute = '/classes/' + classId + '/assignments/' + curAssignment._id + '?_method=PUT';
+
+    h1 Edit #{curAssignment.name}
+    form(action=submitRoute method='POST')
+        div(class="mb-3")
+            label(for="inputName" class="form-label") Name
+            input(type="text" class="form-control" id="inputName" name="name" value=curAssignment.name)
+        div(class="mb-3")
+            label(for="inputMaxPoints" class="form-label") Maximum Points
+            input(type="text" class="form-control" id="inputMaxPoints" name="maxPoints" value=curAssignment.maxPoints)
+        div(class="mb-3")
+            label(for="inputType" class="form-label") Type
+            select(class="form-select" id="inputType" name="type")
+                option(value="homework") Homework
+                option(value="classwork") Classwork
+                option(value="quiz") Quiz
+                option(value="test") Test
+                option(value="lab") Lab
+                option(value="project") Project
+        button(type="submit" class="btn btn-primary") Submit

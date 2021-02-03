@@ -1,0 +1,21 @@
+extends ../layout
+
+block content
+    -let curClass = _class;
+    -let route1 = '/classes/' + curClass._id + '/edit';
+    -let route2 = '/classes/' + curClass._id + '/students';
+    -let route3 = '/classes/' + curClass._id + '/assignments';
+
+    h1 #{curClass.name}
+    div(class="info")
+        p Subject - #{curClass.subject}
+        p Difficulty - #{curClass.difficulty}
+        p Capacity - #{curClass.capacity}
+        p Description - #{curClass.description}
+    a(href=route1) Edit class
+    br
+    a(href=route2) Students
+    br
+    a(href=route3) Assignments
+    br
+    a(href="/classes") Back

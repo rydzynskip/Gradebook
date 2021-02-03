@@ -1,0 +1,21 @@
+extends ../layout
+
+block content
+    - const curClass = _class;
+    - const baseRoute = '/classes/' + curClass._id + '/assignments';
+    h1 Assignments
+    - for (const assignment of curClass.assignments)
+        - let showRoute = baseRoute + '/' + assignment._id;
+        - let deleteRoute = showRoute + '?_method=DELETE';
+        div(class='assignmentList')
+            h4= assignment.name
+            div(class='mb-3')
+            form(action=showRoute method='GET')
+                input(type='submit' value='More info')
+            form(action=deleteRoute method='POST')
+                input(type='submit' value='Delete')
+
+    - let newRoute = baseRoute + '/new';
+    br
+    hr
+    a(href=newRoute) Add new assignment

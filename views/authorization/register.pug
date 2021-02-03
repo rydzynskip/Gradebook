@@ -1,0 +1,12 @@
+extends ../layout
+
+block content
+    h1 Sign Up Page
+    form(action='/register' method='POST')
+        div(class="mb-3")
+            label(for="inputUsername" class="form-label") Username
+            input(type="text" class="form-control" id="inputUsername" name="username")
+        div(class="mb-3")
+            label(for="inputPassword" class="form-label") Password
+            input(type="password" class="form-control" id="inputPassword" name="password")
+        button(type="submit" class="btn btn-primary") Submit

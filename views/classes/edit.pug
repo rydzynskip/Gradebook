@@ -1,0 +1,38 @@
+extends ../layout
+
+block content
+    -let curClass = _class;
+    -let submitRoute = '/classes/' + curClass._id + '?_method=PUT';
+    h1 Edit #{curClass.name}
+    form(action=submitRoute method="POST")
+        div(class="mb-3")
+            label(for="inputName" class="form-label") Name
+            input(type="text" class="form-control" id="inputName" name="name" value=curClass.name)
+        div(class="mb-3")
+            label(for="inputSection" class="form-label") Section
+            input(type="text" class="form-control" id="inputSection" name="section" value=curClass.section)
+        div(class="mb-3")
+            label(for="inputCapacity" class="form-label") Capacity
+            input(type="text" class="form-control" id="inputCapacity" name="capacity" value=curClass.capacity)
+        div(class="mb-3")
+            label(for="inputSubject" class="form-label") Subject
+            select(class="form-select" id="inputSubject" name="subject")
+                - let subjects = ['Mathematics', 'Science', 'History', 'Engineering', 'English'];
+                - for (const subject of subjects)
+                    if (curClass.subject === subject)
+                        option(value=subject selected) #{subject}
+                    else
+                        option(value=subject) #{subject}
+        div(class="mb-3")
+            label(for="inputLevel" class="form-label") Level
+            select(class="form-select" id="inputLevel" name="level")
+                - let levels = ['pre-6', '6', '7', '8', '9', '10', '11', '12', 'college'];
+                - for (const level of levels)
+                    if (curClass.level === level)
+                        option(value=level selected) #{level}
+                    else
+                        option(value=level) #{level}
+        div(class="mb-3")
+            label(for="inputDescription" class="form-label") Description
+            textarea(class="form-control" id="inputDescription" rows="3" name="description") #{curClass.description}
+        button(type="submit" class="btn btn-primary") Submit

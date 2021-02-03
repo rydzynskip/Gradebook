@@ -1,0 +1,19 @@
+extends ../layout
+
+block content
+    - let route1 = '/classes/' + classId + '/students';
+    h1 Add a New Student
+    form(action=route1 method='POST')
+        div(class="mb-3")
+            label(for="inputFirstName" class="form-label") First Name
+            input(type="text" class="form-control" id="inputFirstName" name="firstName")
+        div(class="mb-3")
+            label(for="inputLastName" class="form-label") Last Name
+            input(type="text" class="form-control" id="inputLastName" name="lastName")
+        div(class="mb-3")
+            label(for="inputEmail" class="form-label") Email
+            input(type="email" class="form-control" id="inputEmail" name="email")
+        div(class="mb-3")
+            label(for="inputMoreInfo" class="form-label") More Info
+            textarea(class="form-control" id="inputMoreInfo" rows="3" name="moreInfo")
+        button(type="submit" class="btn btn-primary") Submit

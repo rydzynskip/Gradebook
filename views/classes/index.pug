@@ -1,0 +1,25 @@
+extends ../layout
+
+block content
+    h1 Classes Page
+    a(href='/classes/new') Create new class
+    h2 List of Classes:
+    - for (let i = 0; i < classes.length; i++)
+        - let route1 = '/classes/' + classes[i]._id;
+        - let route2 = '/classes/' + classes[i]._id + '?_method=DELETE';
+        - let name = classes[i].name;
+        - let subject = classes[i].subject;
+        - let difficulty = classes[i].difficulty;
+        - let capacity = classes[i].capacity;
+        div(class="classList")
+            div
+                h4= name
+                br
+                p
+                    strong #{subject}
+                    span  - #{difficulty} - capacity: #{capacity}
+            div
+                form(action=route1 method='GET')
+                    input(type='submit' value='More info')
+                form(action=route2 method='POST')
+                    input(type='submit' value='Delete')

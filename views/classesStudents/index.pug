@@ -1,0 +1,18 @@
+extends ../layout
+
+block content
+    - let curClass = _class;
+    h1 Students in #{curClass.name}
+    - for (let i = 0; i < curClass.students.length; i++)
+        - let route1 = '/classes/' + curClass._id + "/students/" + curClass.students[i]._id;
+        - let route2 = '/classes/' + curClass._id + "/students/" + curClass.students[i]._id + '?_method=DELETE';
+        div(class='studentList')
+            h4= curClass.students[i].name
+            div(class='mb-3')
+                form(action=route1 method='GET')
+                    input(type='submit' value='More info')
+                form(action=route2 method='POST')
+                    input(type='submit' value='Delete')
+    h2 Add a student:
+    - let route2 = '/classes/' + curClass._id + "/students/new";
+    a(href=route2) Add new student

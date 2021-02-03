@@ -1,0 +1,21 @@
+extends ../layout
+
+block content
+    - const curStudent = student;
+    - const gradeList = curStudent.grades;
+    - const backRoute = '/classes/' + classId + '/students/';
+    - const editRoute = backRoute + curStudent._id + '/edit';
+
+    h1= curStudent.name
+    p Email - #{curStudent.email}
+
+    h3 Grades
+    ul
+        - for (const grade of gradeList)
+             li #{grade.name} - score: #{grade.points}
+             ul
+                li #{grade.message}
+
+    a(href=editRoute) Edit student
+    br
+    a(href=backRoute) Back

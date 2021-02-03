@@ -1,0 +1,11 @@
+extends ../layout
+
+block content
+    - let curAssignment = assignment;
+    - let backRoute = '/classes/' + classId + '/assignments';
+    - let editRoute = backRoute + '/' + curAssignment._id + '/edit';
+    h1= curAssignment.name
+    p This assignment is a #{curAssignment.type} and is out of #{curAssignment.maxPoints} points
+    a(href=editRoute) Edit assignment
+    br
+    a(href=backRoute) Back
